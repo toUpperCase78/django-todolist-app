@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - User Registry
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h2>Register New User</h2>
+  <hr class="mt-0 mb-2">
+  <form method="POST" class="form-group">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary mb-2" style="width: 200px;">REGISTER</button>
+    <p style="color: #009900; font-size: 18px;">Upon successful registry, you'll be redirected to the login page.</p>
+  </form>
+{% endblock %}
+
+<!-- As we are using another form with POST method, csrf_token is required again. -->
+<!-- In order to use crispy forms, there must be {% load crispy_forms_tags %} before the forms. -->
+<!-- And change {{ from }} into {{ form|crispy }} -->
