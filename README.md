@@ -36,19 +36,19 @@ More screenshots can be found in the _Screenshots_ folder.
 
 ## Usage
 
-Get all the folders `main`, `register`, `todolist_project` and files `db.sqlite3`, `manage.py` into a root folder (e.g. `todolist_project`) and run the command `python manage.py runserver` to start a development server. In your favorite browser, go to `http://localhost:8000` to view the main page.
+* Get all the folders `main`, `register`, `todolist_project` and files `db.sqlite3`, `manage.py` into a root folder (e.g. `todolist_project`) and run the command `python manage.py runserver` to start a development server. In your favorite browser, go to `http://localhost:8000` to view the main page.
 
-First of all, it is recommended to register yourself by clicking on `REGISTER` button (or the text in the sidebar) and enter the necessary information: `Username`, `First name`, `Last name`, `Email`, `Password`, `Password confirmation`. Then, login by using your credentials.
+* First of all, it is recommended to register yourself by clicking on `REGISTER` button (or the text in the sidebar) and enter the necessary information: `Username`, `First name`, `Last name`, `Email`, `Password`, `Password confirmation`. Then, login by using your credentials.
 
-After successful login, you'll be able to create a new to-do list. To do so, click `Create New To-Do List` button, then specify the name for your new to-do list in the input text and click `Create New List` button. As you're redirected to the available To-Do Lists page, you should see the newly created list, with the name and an ID number on the left.
+* After successful login, you'll be able to create a new to-do list. To do so, click `Create New To-Do List` button, then specify the name for your new to-do list in the input text and click `Create New List` button. As you're redirected to the available To-Do Lists page, you should see the newly created list, with the name and an ID number on the left.
 
-Next, click on the button that is related to your new to-do list. To add a new item for this list, enter something in the input text and click on `Add New Item` button. Upon the addition, the new item must be listed on the screen. You can continue adding more items in this way... Notice that every item has its own ID number on the left.
+* Next, click on the button that is related to your new to-do list. To add a new item for this list, enter something in the input text and click on `Add New Item` button. Upon the addition, the new item must be listed on the screen. You can continue adding more items in this way... Notice that every item has its own ID number on the left.
 
-As you added several items for your to-do list, try clicking on the small boxes on the leftmost side to mark that item as **checked**, and click on `Save Item Status` button to save their check status. Moreover, there are `X` buttons on the right side for each item and clicking on it will delete the specific item from the list.
+* As you added several items for your to-do list, try clicking on the small boxes on the leftmost side to mark that item as **checked**, and click on `Save Item Status` button to save their check status. Moreover, there are `X` buttons on the right side for each item and clicking on it will delete the specific item from the list.
 
-Besides, you can view your profile by clicking on `View User Profile` button in the main page (or `Profile` text in the sidebar). There you can find the details about the currently logged in user with useful information, and available permissions.
+* Besides, you can view your profile by clicking on `View User Profile` button in the main page (or `Profile` text in the sidebar). There you can find the details about the currently logged in user with useful information, and available permissions.
 
-Lastly, try clicking on `Admin` text on the sidebar to access the administration panel, but make sure the user has the necessary permissions.
+* Lastly, try clicking on `Admin` text on the sidebar to access the administration panel, but make sure the user has the necessary permissions.
 
 ## Pre-Defined Users
 
