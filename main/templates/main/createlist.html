@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - Create New List
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="/create-list/" class="form-group">
+        <h2>Specify New To-Do List for <strong>{{ user }}</strong></h2>
+        <hr class="mt-0 mb-2">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit" name="create" class="btn btn-success" style="width: 200px; margin-right: 10px;">
+                    Create New List
+                </button>
+            </div>
+            <!-- {{ form.as_p }} -->
+            <!-- {{ form.as_table }} -->
+            <!-- {{ form.as_ul }} -->
+            {{ form.name }}
+        </div>
+    </form>
+    <hr class="mt-0 mb-2">
+    <a href="/view-list">
+        <button name="homePage" class="btn btn-secondary mb-2" style="width: 200px;">Back to View List</button>
+    </a>
+    <br />
+    <a href="/">
+        <button name="homePage" class="btn btn-secondary mt-0 mb-2" style="width: 200px;">Back to Home Page</button>
+    </a>
+{% endblock %}
+<!-- With 'form' variable, all the defined elements inside the form are displayed, appropriate to the type -->
+<!-- Django automatically creates them for you -->
+<!-- You can try other variations by trying form.as_table, form.as_ul, form.as_p -->
+<!-- {{ form.as_p }} causes the Django form to be rendered as paragraph -->
+<!-- {{ form.as_table }} causes the Django form to be rendered as table -->
+<!-- {{ form.as_ul }} causes the Django form to be rendered as unordered list -->
+
+<!-- Pressing the button after entering the list name will normally cause 403 Forbidden | CSRF Verification Failed -->
+<!-- You must add '{% csrf_token %}' to get rid of this error -->
+<!-- It's more convenient to use POST method for creating a new list, due to modifying the database. -->

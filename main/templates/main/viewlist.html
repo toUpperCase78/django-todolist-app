@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - View Users Lists
+{% endblock %}
+
+{% block content %}
+    <h2>Available To-Do Lists for <strong>{{ user }}</strong></h2>
+    <hr class="mt-0 mb-2">
+    <h3>Found {{ list_cnt }} lists</h3>
+    {% for td in user.todolist.all %}
+        <a href="/view-list-items/{{ td.id }}">
+            <button class="btn btn-primary mt-2" style="width: 240px;">[{{ td.id }}] {{ td.name }}</button>
+        </a>
+        <br />
+    {% endfor %}
+    <hr class="mt-2 mb-1">
+    <a href="/create-list">
+        <button name="createList" class="btn btn-success mt-2" style="width: 240px;">Create New List</button>
+    </a>
+    <br />
+    <a href="/">
+        <button name="homePage" class="btn btn-secondary mt-2 mb-2" style="width: 240px;">Back to Home Page</button>
+    </a>
+{% endblock %}

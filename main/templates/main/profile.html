@@ -1,0 +1,81 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - User Profile
+{% endblock %}
+
+{% block content %}
+    <h2><b>User Profile: {{ user }}</b></h2>
+    <hr class="mt-0 mb-2">
+    <table class="profile">
+        <tr>
+            <td><b>ID</b></td>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <td><b>First Name</b></td>
+            <td>{{ user.first_name }}</td>
+        </tr>
+        <tr>
+            <td><b>Last Name</b></td>
+            <td>{{ user.last_name }}</td>
+        </tr>
+        <tr>
+            <td><b>E-mail</b></td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td><b>Registered on</b></td>
+            <td>{{ user.date_joined }}</td>
+        </tr>
+        <tr>
+            <td><b>Last Login on</b></td>
+            <td>{{ user.last_login }}</td>
+        </tr>
+        <tr>
+            <td><b>Is Active?</b></td>
+            <td>{{ user.is_active }}</td>
+        </tr>
+        <tr>
+            <td><b>Is Anonymous?</b></td>
+            <td>{{ user.is_anonymous }}</td>
+        </tr>
+        <tr>
+            <td><b>Is Authenticated?</b></td>
+            <td>{{ user.is_authenticated }}</td>
+        </tr>
+        <tr>
+            <td><b>Is Staff?</b></td>
+            <td>{{ user.is_staff }}</td>
+        </tr>
+        <tr>
+            <td><b>Is Superuser?</b></td>
+            <td>{{ user.is_superuser }}</td>
+        </tr>
+    </table>
+    <h5 style="margin-top: 5px;"><b>User Permissions:</b></h5>
+    {% if user.get_user_permissions|length == 0 %}
+        <p style="color: red; font-weight: bold;">No permission is available!</p>
+    {% else %}
+        <ul>
+        {% for perm in user.get_user_permissions %}
+            <li>{{ perm }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if user.get_previous_by_date_joined %}
+        <h5><b>Previous User by Register Date:</b> {{ user.get_previous_by_date_joined }}</h5>
+    {% else %}
+        <h5><b>Previous User by Register Date:</b> N/A</h5>
+    {% endif %}
+    {% if user.get_next_by_date_joined %}
+        <h5><b>Next User by Register Date:</b> {{ user.get_next_by_date_joined }}</h5>
+    {% else %}
+        <h5><b>Nexy User by Register Date:</b> N/A</h5>
+    {% endif %}
+    <h5><b>Session Auth Hash:</b> {{ user.get_session_auth_hash }}</h5>
+    <hr class="mt-0 mb-2">
+    <a href="/">
+        <button name="home" class="btn btn-secondary mt-1 mb-2" style="width: 240px;">Back to Home Page</button>
+    </a>
+{% endblock %}

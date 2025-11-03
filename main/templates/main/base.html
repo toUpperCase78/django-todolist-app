@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'main/styles.css' %}" type="text/css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <title>{% block title %}Django To-Do List - Base Page{% endblock %}</title>
+    </head>
+    <body>
+        <div class="sidenav">
+            <a id="home" href="/">Home</a>
+            {% if user.is_authenticated == False %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+            {% if user.is_authenticated == True %}
+                <a href="/create-list">Create List</a>
+                <a href="/view-list">View List</a>
+                <!-- <a href="/view-list-items/2">List ID 2</a> -->
+                <!-- <a href="/view-list-items/3">List ID 3</a> -->
+                <a href="/profile">Profile</a>
+            {% endif %}
+            <a id="admin" href="/admin" target="blank">Admin</a>
+            <a href="/about">
+                <button id="aboutBtn" class="btn btn-secondary">ABOUT</button>
+            </a>
+        </div>
+        <div id="content" name="content" class="main">
+            <div class="row justify-content-center">
+                <div class="col-9">
+                    <h1 class="mt-3">Django, To-Do List Project</h1>
+                    <hr id="basehr" class="mt-0 mb-3">
+                    {% block content %}
+                        <h3>You are using the base template.</h3>
+                        <p><b>List:</b> [{{ id }}] {{ name }}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" 
+          integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    </body>
+    <!-- This is called base template because it is going to be inherited by the child templates. -->
+    <!-- To access the variables loaded from the dictionary, use double curly braces -->
+    <!-- Use blocks (curly brace and percent) with the same names to load different contents in different pages -->
+    <!-- The related sidebar is working inside of this HTML file and visible in all other pages -->
+    <!-- Bootstrap is essentially a CSS, JavaScript, jQuery framework, which allows you to add some custom built styling
+         to your website. -->
+    <!-- All you need to do is to copy the link and script tags and paste here -->
+    <!-- The DOCTYPE and viewport are needed, because Bootstrap was designed for mobile first -->
+</html>

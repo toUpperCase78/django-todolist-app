@@ -1,0 +1,69 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - View List Items
+{% endblock %}
+
+{% block content %}
+    <h2><b>{{ user }}</b> &gt; [{{ ls.id }}] {{ ls.name }}</h2>
+    <hr class="mt-0 mb-2">
+    <h3>Found {{ item_cnt }} items ({{ click_cnt }} clicked)</h3>
+    <form method="post" action="#">
+        {% csrf_token %}
+        {% for item in ls.item_set.all %}
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    {% if item.complete == True %}
+                        <input type="checkbox" name="c{{ item.id }}" value="clicked" class="form-check-input mb-2" checked>
+                    {% else %}
+                        <input type="checkbox" name="c{{ item.id }}" value="clicked" class="form-check-input mb-2">
+                    {% endif %}
+                </div>
+            </div>
+            <span class="input-group-text">{{ item.id }}</span>
+            <input type="text" class="form-control" value="{{ item.text }}">
+            <div class="input-group-append">
+                <!-- <button class="btn btn-outline-primary mb-0" name="editItemName" value="{{ item.id }}|{{item.text}}">
+                    Edit
+                </button> -->
+                <button class="btn btn-outline-danger mb-0" name="deleteItem" value="{{ item.id }}" 
+                        style="height: 42px; font-weight: bold;">
+                    X
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- <ul>
+            {% for item in ls.item_set.all %}
+                {% if item.complete == True %}
+                    <li><input type="checkbox" name="c{{ item.id }}" value="clicked" checked>[{{ item.id }}] {{ item.text }}</li>
+                {% else %}
+                    <li><input type="checkbox" name="c{{ item.id }}" value="clicked">[{{ item.id }}] {{ item.text }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul> -->
+        <hr class="mt-2 mb-2">
+        <button type="submit" name="saveItem" value="saveItem" class="btn btn-success mb-2" style="width: 200px;">
+            Save Item Status
+        </button>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <button type="submit" name="newItem" value="newItem" class="btn btn-success" 
+                        style="width: 200px; margin-right: 10px;">
+                    Add New Item
+                </button>
+            </div>
+            <input type="text" name="newItemName" style="width: 500px;">
+        </div>
+    </form>
+    <a href="/view-list">
+        <button name="homePage" class="btn btn-secondary mb-2" style="width: 200px;">Back to View List</button>
+    </a>
+    <br />
+    <a href="/">
+        <button name="homePage" class="btn btn-secondary mb-2" style="width: 200px;">Back to Home Page</button>
+    </a>
+{% endblock %}
+<!-- Use 'for' loop with curly braces and percentage signs to iterate through elements from the variable -->
+<!-- 'if/else' statements can also be used with very similar syntax like above -->

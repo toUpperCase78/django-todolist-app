@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+    Django To-Do List - Home Page
+{% endblock %}
+
+{% block content %}
+    <!-- <p><b>List:</b> [{{ id }}] {{ name }}</p> -->
+    {% if user.is_authenticated == False %}
+    <h2>Welcome; to use this application, please register or login.</h2>
+    <hr class="mt-0 mb-2">
+    <a href="/register/">
+        <button name="register" class="btn btn-primary mt-2" style="width: 200px;">REGISTER</button>
+    </a>
+    <br />
+    <a href="/login/">
+        <button name="login" class="btn btn-primary mt-2" style="width: 200px;">LOGIN</button>
+    </a>
+    <br />
+    {% endif %}
+    {% if user.is_authenticated == True %}
+    <h2>Welcome; you are logged in as <b>{{ user }}</b>. <br /> What do you want to do?</h2>
+    <hr class="mt-0 mb-2">
+    <a href="/create-list/">
+        <button name="create-list" class="btn btn-primary mt-2" style="width: 240px;">Create New To-Do List</button>
+    </a>
+    <br />
+    <a href="/view-list/">
+        <button name="view-list" class="btn btn-primary mt-2" style="width: 240px;">View Available Lists</button>
+    </a>
+    <br />
+    <a href="/profile">
+        <button name="profile" class="btn btn-primary mt-2" style="width: 240px;">View User Profile</button>
+    </a>
+    <br />
+    <form method="POST" action="logout/">
+        {% csrf_token %}
+        <button name="logout" class="btn btn-secondary mt-2" style="width: 240px;">LOGOUT</button>
+    </form>
+    <br />
+    {% endif %}
+    <!--
+    {% if user.is_authenticated %}
+        You are authenticated as {{ user }}
+    {% else %}
+        You are not authenticated 
+    {% endif %}
+    -->
+{% endblock %}
